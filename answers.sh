@@ -7,7 +7,7 @@ UPDATE students SET Points = Points + 1 WHERE Name = "Basma";
 UPDATE students SET Points = Points - 1 WHERE Name = "Alex";
 #################BASIC QUERIES################################
 
-
+#################CREATING TABLE################################
 CREATE TABLE graduates (
 ID int NOT NULL PRIMARY KEY ,
 Name text NOT NULL UNIQUE,
@@ -29,3 +29,22 @@ UPDATE graduates SET Graduation = 08-09-2018 WHERE Name = "Layal";
 
 
 DELETE FROM students WHERE Name = "Layal";
+#################CREATING TABLE################################
+
+#################JOINING TABLE################################
+CREATE TABLE employee_company AS
+SELECT employees.Name AS EmployeeName, 
+companies.Name AS CompanyName,
+companies.Date AS CompanyDate
+FROM employees
+INNER JOIN companies ON employees.Company = companies.Name;
+
+
+SELECT EmployeeName FROM employee_company WHERE
+CompanyDate < 2000;
+
+SELECT companies.Name
+FROM companies
+INNER JOIN employees ON companies.ID = employees.Company
+WHERE employees.Role = "Graphic Designer";
+#################JOINING TABLE################################
